@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, UserProfileForm
-from django.db.models import Q
+
 
 
 @login_not_required
