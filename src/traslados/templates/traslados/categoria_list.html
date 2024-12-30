@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Categorías de paquetes</h1>
+    {% for categoria in categorias %}
+        <p>{{ categoria.nombre }}</p>
+    {% endfor %}
+    
+    <a href="{% url 'core:index' %}">Inicio</a>
+    <a href="{% url 'traslados:index' %}">Volver</a>
+{% endblock content %}
