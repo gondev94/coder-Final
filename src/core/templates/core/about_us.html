@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="text-align: center;">
+    
+<img src="{% static 'core/img/banner2.png' %}" alt="" height="500" width="550">
+</div>
+
+<p style="text-align: center;">Somos una agencia dedicada al traslado de paquetes como de personas, no dudes en contactar nuestro servicio</p>
+
+<div style="text-align: center;">
+<a href="{% url 'core:index' %}">Volver a inicio</a>
+</div>
+{% endblock content %}

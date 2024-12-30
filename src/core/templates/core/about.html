@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+    
+<h1 style="text-align: center;">Acerca de mí</h1>
+
+<div style="text-align: center;">
+<img src="{% static 'core/img/about.jpg' %}" alt="" height="200">
+</div>
+<p>Mi nombre es Gonzalo Peralta, soy estudiante inicial del lenguaje python a lo largo de este curso hemos aprendido a usar el framework Django. 
+    En esta oportunidad he realizado una aplicación de gestión de solicitud y cotización de fletes.
+</p>
+
+<div style="text-align: center;">
+    <a href="https://www.linkedin.com/in/gonzalo-ezequiel-peralta-a55b44161/" class="boton">Linkedin</a>
+</div>
+
+<div style="text-align: center;">
+<a href="{% url 'core:index' %}">Volver a inicio</a>
+</div>
+
+
+{% endblock content %}

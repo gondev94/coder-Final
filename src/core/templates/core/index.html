@@ -1,7 +1,48 @@
 {% extends 'core/base.html' %}
-{% block content %}
-<h1>app core</h1>
+{% load static %}
 
-<a href="{% url 'traslados:index' %}"></a>
+{% block content %}
+<div style="text-align: center;">
+    
+<img src="{% static 'core/img/banner.png' %}" alt="" height="500" width="300">
+</div>
+<div>
+    {% if user.is_authenticated %}
+        <div style="text-align: center;">
+        <a href="{% url 'tralados:index' %}"><button>Ir a Fletes</button></a>
+        <form action="{% url 'core:logout' %}" method="post">
+            {% csrf_token %}
+        </div>
+        <div style="text-align: center;">
+        <a href="{% url 'core:logout' %}"><button type="submit">Cerrar Sesión</button></a> 
+        </div>
+        </form>
+        <div style="text-align: center;">
+        <a href="{% url 'core:profile' %}">
+            <button>Mi Perfil</button>
+        </a>
+        </div>
+        {% else %}
+        <div style="text-align: center;">
+            <a href="{% url 'core:login' %}"><button>Iniciar Sesión</button></a>   
+        </div>    
+            {% endif %}
+        <div style="text-align: center;">
+            <a href="{% url 'core:about' %}">Acerca de mí</a>
+        </div>
+        <div style="text-align: center;">
+            <a href="{% url 'core:about_us' %}">Nosotros</a>
+        </div>
+</div>
+    <div style="text-align: center;">
+    {% for message in messages %}
+        <p> {{ message }} </p>
+    {% endfor %}
+    </div>
+    <div style="text-align: center;">
+        <p>&copy;Aplicación de logística y gestión de fletes hecha en CoderHouse</p>
+    </div>
 
 {% endblock content %}
+
+

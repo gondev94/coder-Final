@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center;">Sesión cerrada</h1>
+    <p style="text-align: center;">Has cerrado tu sesión correctamente.</p>
+    
+    <div style="text-align: center;">
+
+    <a href="{% url 'core:login' %}" class="boton">Volver a Iniciar Sesión</a>
+    </div>
+
+    <div style="text-align: center;">
+    <a href="{% url 'core:index' %}">Volver a inicio</a>
+    </div>
+    {% endblock content %}
