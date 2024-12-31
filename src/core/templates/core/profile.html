@@ -6,6 +6,8 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Guardar Cambios</button>
+        <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+        <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
     </form>
 
 {% endblock content %}

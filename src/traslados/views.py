@@ -13,7 +13,7 @@ def categoria_list(requets):
 ########################################################
 def categoria_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
-        form = form = forms.CategoriaForm()
+        form = forms.CategoriaForm()
     if request.method == 'POST':
         form = forms.CategoriaForm(request.POST)
         if form.is_valid():

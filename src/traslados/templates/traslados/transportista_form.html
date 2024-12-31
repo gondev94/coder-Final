@@ -6,4 +6,6 @@
         {{ form.as_p }}
         <button type="submit">Guardar</button>
     </form>
+    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
 {% endblock content %}

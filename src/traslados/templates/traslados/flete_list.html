@@ -7,7 +7,7 @@
             <p>Cliente: {{object.cliente}}</p>
         {% endfor %}
         <ul><a href="{% url 'traslados:flete_create' %}"><button>Crear Fletes</button></a></ul>
-        <a href="{% url 'core:index' %}">Inicio</a>
-        <a href="{% url 'traslados:index' %}">Volver</a>
+        <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+        <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
     </ul>
 {% endblock content %}  
