@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime
 
-
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.TextField()
@@ -37,7 +36,7 @@ class Cliente(models.Model):
     paquete = models.ForeignKey(Paquete, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'{self.nombre} - {self.apellido} - {self.direccion} - {self.telefono} - {self.email}'
+        return f'{self.nombre} - {self.direccion} - {self.telefono} - {self.email}'
     
     class Meta:
         verbose_name = 'Cliente'
@@ -66,6 +65,7 @@ class Cotizacion(models.Model):
 class Flete(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True)
 
+        
     def __str__(self):
         return f'{self.cliente}'
     

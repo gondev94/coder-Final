@@ -7,7 +7,6 @@ admin.site.register(models.Categoria)
 @admin.register(models.Paquete)
 class PaqueteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'descripcion', 'distancia', 'categoria')
-
     
 @admin.register(models.Cotizacion)
 class CotizacionAdmin(admin.ModelAdmin):

@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Lista de Cotizaciones</h1>
+    <ul>
+        {% for object in object_list %}
+            <p>{{object.cliente}} - {{object.paquete}} - ${{object.total}} - {{object.fecha_de_entrega}} </p>
+        {% endfor %}
+    </ul>
+{% endblock content %}  

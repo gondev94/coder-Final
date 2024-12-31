@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Lista de Fletes</h1>
+    <ul>
+        {% for object in object_list %}
+            <p>{{object.cliente}}</p>
+        {% endfor %}
+    </ul>
+{% endblock content %}  

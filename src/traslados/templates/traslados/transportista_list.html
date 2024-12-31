@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Lista de Transportistas</h1>
+    <ul>
+        {% for object in object_list %}
+            <p>{{object.nombre}} - {{object.apellido}} | {{object.licencia}} | {{object.telefono}} | {{object.email}} | {{object.flete}} </p>
+        {% endfor %}
+    </ul>
+{% endblock content %}  
