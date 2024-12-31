@@ -7,6 +7,8 @@
             <p>{{object.nombre}} </p>
         {% endfor %}
         <ul><a href="{% url 'traslados:paquete_create' %}"><button>Crear Paquetes</button></a></ul>
+        <ul><a href="{% url 'traslados:categoria_list' %}"><button>Categoria de paquetes</button></a></ul>
+
         <a href="{% url 'core:index' %}">Inicio</a>
         <a href="{% url 'traslados:index' %}">Volver</a>
     </ul>

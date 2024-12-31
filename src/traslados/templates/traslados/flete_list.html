@@ -4,7 +4,7 @@
     <h1>Lista de Fletes</h1>
     <ul>
         {% for object in object_list %}
-            <p>{{object.cliente}}</p>
+            <p>Cliente: {{object.cliente}}</p>
         {% endfor %}
         <ul><a href="{% url 'traslados:flete_create' %}"><button>Crear Fletes</button></a></ul>
         <a href="{% url 'core:index' %}">Inicio</a>
