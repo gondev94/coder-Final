@@ -5,7 +5,7 @@
     {% for categoria in categorias %}
         <p>{{ categoria.nombre }}</p>
     {% endfor %}
-    
+    <ul><a href="{% url 'traslados:categoria_create' %}"><button>Crear Categoria</button></a></ul>
     <a href="{% url 'core:index' %}">Inicio</a>
     <a href="{% url 'traslados:index' %}">Volver</a>
 {% endblock content %}

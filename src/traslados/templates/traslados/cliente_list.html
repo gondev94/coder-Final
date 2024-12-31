@@ -6,5 +6,8 @@
         {% for object in object_list %}
             <p>{{object.nombre}} - {{object.apellido}} - {{object.direccion }} -{{object.telefono}} - {{object.email}} - {{object.paquete}}</p>
         {% endfor %}
+        <ul><a href="{% url 'traslados:cliente_create' %}"><button>Crear cliente</button></a></ul>
+        <a href="{% url 'core:index' %}">Inicio</a>
+        <a href="{% url 'traslados:index' %}">Volver</a>
     </ul>
 {% endblock content %}  

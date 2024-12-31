@@ -6,5 +6,8 @@
         {% for object in object_list %}
             <p>{{object.nombre}} - {{object.apellido}} | {{object.licencia}} | {{object.telefono}} | {{object.email}} | {{object.flete}} </p>
         {% endfor %}
+        <ul><a href="{% url 'traslados:transportista_create' %}"><button>Crear Transportistas</button></a></ul>
+        <a href="{% url 'core:index' %}">Inicio</a>
+        <a href="{% url 'traslados:index' %}">Volver</a>
     </ul>
 {% endblock content %}  

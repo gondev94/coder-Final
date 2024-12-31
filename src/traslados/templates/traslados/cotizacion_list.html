@@ -6,5 +6,8 @@
         {% for object in object_list %}
             <p>{{object.cliente}} - {{object.paquete}} - ${{object.total}} - {{object.fecha_de_entrega}} </p>
         {% endfor %}
+        <ul><a href="{% url 'traslados:cotizacion_create' %}"><button>Crear Cotización</button></a></ul>
+        <a href="{% url 'core:index' %}">Inicio</a>
+        <a href="{% url 'traslados:index' %}">Volver</a>
     </ul>
 {% endblock content %}  
