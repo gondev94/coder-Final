@@ -44,6 +44,9 @@ class CotizacionForm(forms.ModelForm):
     class Meta:
         model = models.Cotizacion
         fields = ['cliente', 'descripcion', 'precio_por_km', 'paquete', 'fecha_de_entrega']
+        widgets = {
+            'fecha_de_entrega': forms.DateInput(attrs={'type':'date'})}
+            
     
     def clean_descripcion(self):
         descripcion:str = self.cleaned_data.get('descripcion','')
