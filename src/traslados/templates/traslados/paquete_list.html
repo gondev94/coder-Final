@@ -4,7 +4,8 @@
     <h1>Lista de paquetes</h1>
     <ul>
         {% for object in object_list %}
-            <p>{{object.nombre}} </p>
+            <p>Tipo: {{object.nombre}} Descripción: {{object.descripcion}} Categoría: {{object.categoria}}  </p>
+            <P></P>
         {% endfor %}
         <ul><a href="{% url 'traslados:paquete_create' %}"><button>Crear Paquetes</button></a></ul>
         <ul><a href="{% url 'traslados:categoria_list' %}"><button>Categoria de paquetes</button></a></ul>

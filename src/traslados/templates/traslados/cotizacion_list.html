@@ -4,7 +4,7 @@
     <h1>Lista de Cotizaciones</h1>
     <ul>
         {% for object in object_list %}
-            <p>{{object.cliente}} - {{object.paquete}} - ${{object.total}} - {{object.fecha_de_entrega}} </p>
+            <p>Cliente: {{object.cliente}} - Paquete: {{object.paquete}} - Total ${{object.total}} - Fecha de entrega: {{object.fecha_de_entrega}} </p>
         {% endfor %}
         <ul><a href="{% url 'traslados:cotizacion_create' %}"><button>Crear Cotización</button></a></ul>
         <a href="{% url 'core:index' %}">Inicio</a>
