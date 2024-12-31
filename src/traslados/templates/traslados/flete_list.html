@@ -2,12 +2,25 @@
 
 {% block content %}
     <h1>Lista de Fletes</h1>
-    <ul>
-        {% for object in object_list %}
-            <p>Cliente: {{object.cliente}}</p>
-        {% endfor %}
-        <ul><a href="{% url 'traslados:flete_create' %}"><button>Crear Fletes</button></a></ul>
-        <a href="{% url 'core:index' %}"><button>Inicio</button></a>
-        <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
-    </ul>
-{% endblock content %}  
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flete in object_list %}
+                <tr>
+                    <td>{{ flete.cliente }}</td>
+                    <td>
+                        <a href="{% url 'traslados:flete_update' flete.id %}"><button>Editar</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'traslados:flete_create' %}"><button>Crear Flete</button></a>
+    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+{% endblock content %}

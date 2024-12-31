@@ -2,12 +2,31 @@
 
 {% block content %}
     <h1>Lista de Cotizaciones</h1>
-    <ul>
-        {% for object in object_list %}
-            <p>Cliente: {{object.cliente}} - Paquete: {{object.paquete}} - Total ${{object.total}} - Fecha de entrega: {{object.fecha_de_entrega}} </p>
-        {% endfor %}
-        <ul><a href="{% url 'traslados:cotizacion_create' %}"><button>Crear Cotización</button></a></ul>
-        <a href="{% url 'core:index' %}"><button>Inicio</button></a>
-        <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
-    </ul>
-{% endblock content %}  
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Paquete</th>
+                <th>Total</th>
+                <th>Fecha de entrega</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cotizacion in object_list %}
+                <tr>
+                    <td>{{ cotizacion.cliente }}</td>
+                    <td>{{ cotizacion.paquete }}</td>
+                    <td>${{ cotizacion.total }}</td>
+                    <td>{{ cotizacion.fecha_de_entrega }}</td>
+                    <td>
+                        <a href="{% url 'traslados:cotizacion_update' cotizacion.id %}"><button>Editar</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'traslados:cotizacion_create' %}"><button>Crear Cotización</button></a>
+    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+{% endblock content %}

@@ -2,12 +2,35 @@
 
 {% block content %}
     <h1>Lista de Clientes</h1>
-    <ul>
-        {% for object in object_list %}
-            <p>Nombre: {{object.nombre}} - Apellido: {{object.apellido}} - Dirección: {{object.direccion }} - Teléfono: {{object.telefono}} - Email: {{object.email}} - Paquete: {{object.paquete}}</p>
-        {% endfor %}
-        <ul><a href="{% url 'traslados:cliente_create' %}"><button>Crear cliente</button></a></ul>
-        <a href="{% url 'core:index' %}"><button>Inicio</button></a>
-        <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
-    </ul>
-{% endblock content %}  
+    <a href="{% url 'traslados:cliente_create' %}"><button>Crear Cliente</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Paquete</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in object_list %}
+                <tr>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.direccion }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.paquete.nombre }}</td>
+                    <td>
+                        <a href="{% url 'traslados:cliente_update' cliente.id %}"><button>Editar</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+{% endblock content %}

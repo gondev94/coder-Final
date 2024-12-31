@@ -1,16 +1,31 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-    <h1>Lista de paquetes</h1>
-    <ul>
-        {% for object in object_list %}
-            <p>Tipo: {{object.nombre}} Descripción: {{object.descripcion}} Categoría: {{object.categoria}}  </p>
-            <P></P>
-        {% endfor %}
-        <ul><a href="{% url 'traslados:paquete_create' %}"><button>Crear Paquetes</button></a></ul>
-        <ul><a href="{% url 'traslados:categoria_list' %}"><button>Categoria de paquetes</button></a></ul>
-
-        <a href="{% url 'core:index' %}"><button>Inicio</button></a>
-        <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
-    </ul>
-{% endblock content %}  
+    <h1>Lista de Paquetes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paquete in object_list %}
+                <tr>
+                    <td>{{ paquete.nombre }}</td>
+                    <td>{{ paquete.descripcion }}</td>
+                    <td>{{ paquete.categoria }}</td>
+                    <td>
+                        <a href="{% url 'traslados:paquete_update' paquete.id %}"><button>Editar</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'traslados:paquete_create' %}"><button>Crear Paquete</button></a>
+    <a href="{% url 'traslados:categoria_list' %}"><button>Categoria de Paquetes</button></a>
+    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+{% endblock content %}

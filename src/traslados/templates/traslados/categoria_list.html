@@ -1,11 +1,30 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-    <h1>Categorías de paquetes</h1>
-    {% for categoria in categorias %}
-        <p>{{ categoria.nombre }}</p>
-    {% endfor %}
-    <ul><a href="{% url 'traslados:categoria_create' %}"><button>Crear Categoria</button></a></ul>
+    <h1>Categorias</h1>
+    <a href="{% url 'traslados:categoria_create' %}"><button>Nueva Categoria</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+                <tr>
+                    <td>{{ categoria.nombre }}</td>
+                    <td>{{ categoria.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'traslados:categoria_update' categoria.id %}"><button>Editar</button></a>
+                       
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <a href="{% url 'core:index' %}"><button>Inicio</button></a>
     <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+
 {% endblock content %}
