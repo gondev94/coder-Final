@@ -10,7 +10,7 @@ class CategoriaForm(forms.ModelForm):
         nombre:str = self.cleaned_data.get('nombre','')
         if len(nombre) < 3:
             raise forms.ValidationError('Debe tener al menos 3 caracteres')
-        if not nombre.isalpha():
+        if nombre.isalpha():
             raise forms.ValidationError('Debe contener caracteres alfabéticos')
         return nombre
 
@@ -23,8 +23,6 @@ class PaqueteForm(forms.ModelForm):
         nombre:str = self.cleaned_data.get('nombre','')
         if len(nombre) < 3:
             raise forms.ValidationError('Debe tener al menos 3 caracteres')
-        if not nombre.isalpha():
-            raise forms.ValidationError('Debe contener caracteres alfabéticos')
         return nombre
     
 class ClienteForm(forms.ModelForm):

@@ -1,5 +1,4 @@
 {% extends 'core/base.html' %}
-
 {% block content %}
     <h1>Lista de Paquetes</h1>
     <a href="{% url 'core:index' %}"><button>Inicio</button></a>
@@ -30,6 +29,4 @@
             {% endfor %}
         </tbody>
     </table>
-  
-
-{% endblock content %}
+    {% endblock content %}

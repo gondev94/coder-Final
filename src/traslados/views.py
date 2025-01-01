@@ -44,7 +44,7 @@ def categoria_delete (request: HttpRequest, pk: int) -> HttpResponse:
     if request.method == 'POST':
         query.delete()    
         return redirect('traslados:categoria_list')
-    return render(request, 'traslados/categoria_delete.html', {'object': query})
+    return render(request, 'traslados/categoria_confirm_delete.html', {'object': query})
 
 
 #########################################################

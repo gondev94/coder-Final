@@ -9,6 +9,7 @@ class Categoria(models.Model):
         return f'{self.nombre}'
     
     class Meta:
+        unique_together = ('nombre', 'descripcion')
         verbose_name = 'Categoria de Paquetes'
         verbose_name_plural = 'Categorias de Paquetes'
 

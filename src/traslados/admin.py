@@ -7,7 +7,10 @@ admin.site.register(models.Categoria)
 @admin.register(models.Paquete)
 class PaqueteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'descripcion', 'distancia', 'categoria')
-    
+    list_display_links = ('nombre',)
+    list_filter = ('categoria', 'distancia',)
+    search_fields = ('nombre', 'categoria',)
+
 @admin.register(models.Cotizacion)
 class CotizacionAdmin(admin.ModelAdmin):
     list_display = ('cliente', 'descripcion', 'precio_por_km', 'paquete', 'total', 'fecha_de_entrega')
