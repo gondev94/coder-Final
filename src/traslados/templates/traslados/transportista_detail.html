@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Transportista: {{ transportista.nombre }} {{ transportista.apellido }}</h1>
+    <ul>
+        <li><strong>Nombre: </strong> {{ transportista.nombre }}</li>
+        <li><strong>Apellido: </strong> {{ transportista.apellido }}</li>
+        <li><strong>Licencia: </strong> {{ transportista.licencia }}</li>
+        <li><strong>Teléfono: </strong> {{ transportista.telefono }}</li>
+        <li><strong>Email: </strong> {{ transportista.email }}</li>
+        <li><strong>Flete: </strong> {{ transportista.flete }}</li>
+    </ul>
+    <a href="{% url 'traslados:transportista_list' %}"><button>Volver</button></a>
+{% endblock content %}

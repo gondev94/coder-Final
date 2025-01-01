@@ -2,11 +2,11 @@
 
 {% block content %}
     <h1>Confirmar Eliminación</h1>
-    <p>¿Estás seguro de que deseas eliminar al cliente "{{ cliente.nombre }}"?</p>
+    <p>¿Estás seguro de que deseas eliminar el flete de "{{ flete.cliente }}"?</p>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Si, Eliminar</button>
     </form>
-    <a href="{% url 'traslados:cliente_list' %}"><button type="button">No, Cancelar</button></a>
+    <a href="{% url 'traslados:flete_list' %}"><button type="button">No, Eliminar</button></a>
 
 {% endblock content %}

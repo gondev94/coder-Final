@@ -3,6 +3,7 @@
 {% block content %}
     <h1>Lista de Clientes</h1>
     <a href="{% url 'traslados:cliente_create' %}"><button>Crear Cliente</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
     <table>
         <thead>
             <tr>
@@ -35,5 +36,5 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+
 {% endblock content %}

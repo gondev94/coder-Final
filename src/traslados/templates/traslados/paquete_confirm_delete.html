@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h1>Confirmar eliminación de paquete</h1>
+    <p>¿Está seguro de que desea eliminar el paquete "{{ paquete.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+    </form>
+    <a href="{% url 'traslados:paquete_list' %}"><button>No, cancelar</button></a>
+{% endblock content %}

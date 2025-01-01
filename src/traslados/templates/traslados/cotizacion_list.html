@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Lista de Cotizaciones</h1>
+    <a href="{% url 'traslados:cotizacion_create' %}"><button>Crear Cotización</button></a>
+    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
     <table>
         <thead>
             <tr>
@@ -28,7 +31,5 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'traslados:cotizacion_create' %}"><button>Crear Cotización</button></a>
-    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
-    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+
 {% endblock content %}

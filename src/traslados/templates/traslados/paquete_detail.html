@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h1>Paquete vista en detalle</h1>
+    {% if paquete %}
+    <ul>
+        <li><strong>Nombre: </strong> {{ paquete.nombre }} </li>
+        <li><strong>Descripción: </strong> {{ paquete.descripcion }} </li>
+       
+    </ul>
+    {% else %}
+    <p>No se encontró el paquete.</p>
+    {% endif %}
+    <a href="{% url 'traslados:paquete_list' %}"><button>Volver</button></a>
+{% endblock content %}

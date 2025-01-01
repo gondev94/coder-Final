@@ -2,6 +2,10 @@
 
 {% block content %}
     <h1>Lista de Paquetes</h1>
+    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+    <a href="{% url 'traslados:paquete_create' %}"><button>Crear Paquete</button></a>
+    <a href="{% url 'traslados:categoria_list' %}"><button>Categoria de Paquetes</button></a>
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
     <table>
         <thead>
             <tr>
@@ -18,16 +22,14 @@
                     <td>{{ paquete.descripcion }}</td>
                     <td>{{ paquete.categoria }}</td>
                     <td>
-                        <a href="{% url 'traslados:paquete_update' paquete.id %}"><button>Editar</button></a>
+                        <ol><a href="{% url 'traslados:paquete_update' paquete.id %}"><button>Editar</button></a></ol> 
+                        <ol><a href="{% url 'traslados:paquete_delete' paquete.id %}"><button>Eliminar</button></a></ol> 
+                       <ol><a href="{% url 'traslados:paquete_detail' paquete.id %}"><button>Ver</button></a></ol> 
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
   
-    <a href="{% url 'traslados:paquete_create' %}"><button>Crear Paquete</button></a>
-    <a href="{% url 'traslados:categoria_list' %}"><button>Categoria de Paquetes</button></a>
 
-    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
-    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
 {% endblock content %}

@@ -59,11 +59,6 @@ class FleteForm(forms.ModelForm):
         model = models.Flete
         fields = ['cliente']
     
-    def clean_cliente(self):
-        cliente:str = self.cleaned_data.get('cliente','')
-        if len(cliente) < 3:
-            raise forms.ValidationError('Debe tener al menos 3 caracteres')
-        return cliente
     
 class TransportistaForm(forms.ModelForm):
     class Meta:

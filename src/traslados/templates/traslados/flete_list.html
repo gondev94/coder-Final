@@ -14,7 +14,9 @@
                 <tr>
                     <td>{{ flete.cliente }}</td>
                     <td>
-                        <a href="{% url 'traslados:flete_update' flete.id %}"><button>Editar</button></a>
+                        <ol><a href="{% url 'traslados:flete_update' flete.id %}"><button>Editar</button></a></ol>
+                        <ol><a href="{% url 'traslados:flete_detail' flete.id %}"><button>Ver</button></a></ol>
+                        <ol><a href="{% url 'traslados:flete_delete' flete.id %}"><button>Eliminar</button></a></ol>
                     </td>
                 </tr>
             {% endfor %}

@@ -111,6 +111,17 @@ def flete_update(request: HttpRequest, pk: int) -> HttpResponse:
             return redirect('traslados:flete_list')
     return render(request, 'traslados/flete_form.html', {'form': form})
 
+def flete_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Flete, id=pk)
+    return render(request, 'traslados/flete_detail.html', {'flete': query})
+
+def flete_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Flete, id=pk)
+    if request.method == 'POST':
+        query.delete()
+        return redirect('traslados:flete_list')
+    return render(request, 'traslados/flete_confirm_delete.html', {'flete': query})
+
 ########################################################
 def cotizacion_list(requets: HttpRequest) -> HttpResponse:
     query = Cotizacion.objects.all()
@@ -179,6 +190,17 @@ def paquete_update(request: HttpRequest, pk: int) -> HttpResponse:
             return redirect('traslados:paquete_list')
     return render(request, 'traslados/paquete_form.html', {'form': form})
 
+def paquete_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Paquete, id=pk)
+    return render(request, 'traslados/paquete_detail.html', {'paquete': query})
+
+def paquete_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Paquete, id=pk)
+    if request.method == 'POST':
+        query.delete()
+        return redirect('traslados:paquete_list')
+    return render(request, 'traslados/paquete_confirm_delete.html', {'paquete': query})
+
 ########################################################
 def transportista_list(requets: HttpRequest) -> HttpResponse:
     query = Transportista.objects.all()
@@ -206,4 +228,15 @@ def transportista_update(request: HttpRequest, pk: int) -> HttpResponse:
             form.save()
             return redirect('traslados:transportista_list')
     return render(request, 'traslados/transportista_form.html', {'form': form})
+
+def transportista_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Transportista, id=pk)
+    return render(request, 'traslados/transportista_detail.html', {'transportista': query})
+
+def transportista_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Transportista, id=pk)
+    if request.method == 'POST':
+        query.delete()
+        return redirect('traslados:transportista_list')
+    return render(request, 'traslados/transportista_confirm_delete.html', {'transportista': query})
 ########################################################

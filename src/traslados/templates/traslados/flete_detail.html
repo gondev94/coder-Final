@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Flete vista en detalle</h1>
+    {% if flete %}
+    <ul>
+        <li><strong>Cliente: </strong> {{ flete.cliente }} </li>
+
+    </ul>
+    {% else %}
+    <p>No se encontró el flete.</p>
+    {% endif %}
+    <a href="{% url 'traslados:flete_list' %}"><button>Volver</button></a>
+{% endblock content %}
