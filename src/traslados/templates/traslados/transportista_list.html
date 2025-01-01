@@ -27,9 +27,9 @@
                     <td>{{ transportista.email }}</td>
                     <td>{{ transportista.flete }}</td>
                     <td>
-                        <a href="{% url 'traslados:transportista_update' transportista.id %}"><button>Editar</button></a>
-                        <a href="{% url 'traslados:transportista_detail' transportista.id %}"><button>Ver</button></a>
-                        <a href="{% url 'traslados:transportista_delete' transportista.id %}"><button>Eliminar</button></a>
+                        <ol><a href="{% url 'traslados:transportista_update' transportista.id %}"><button>Editar</button></a></ol>
+                        <ol><a href="{% url 'traslados:transportista_detail' transportista.id %}"><button>Ver</button></a></ol>
+                        <ol><a href="{% url 'traslados:transportista_delete' transportista.id %}"><button>Eliminar</button></a></ol>
                     </td>
                 </tr>
             {% endfor %}
