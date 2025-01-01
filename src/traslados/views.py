@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CategoriaForm, ClienteForm, CotizacionForm, FleteForm, PaqueteForm, TransportistaForm
 from django.http import HttpResponse, HttpRequest
 from .models import Categoria, Cliente, Flete, Cotizacion, Paquete, Transportista
 
 
-# Create your views here.
+
 def index(request):
     return render(request, 'traslados/index.html')
 
@@ -39,7 +39,12 @@ def categoria_detail(request: HttpRequest, pk: int) -> HttpResponse:
     query = Categoria.objects.get(id=pk)
     return render(request, 'traslados/categoria_detail.html', {'object': query})
 
-
+def categoria_delete (request: HttpRequest, pk: int) -> HttpResponse:
+    query = Categoria.objects.get(id=pk)
+    if request.method == 'POST':
+        query.delete()    
+        return redirect('traslados:categoria_list')
+    return render(request, 'traslados/categoria_delete.html', {'object': query})
 
 
 #########################################################
@@ -69,6 +74,16 @@ def cliente_update(request: HttpRequest, pk: int) -> HttpResponse:
             return redirect('traslados:cliente_list')
     return render(request, 'traslados/cliente_form.html', {'form': form})
 
+def cliente_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Cliente, id=pk)
+    return render(request, 'traslados/cliente_detail.html', {'cliente': query})
+
+def cliente_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Cliente, id=pk)
+    if request.method == 'POST':
+        query.delete()
+        return redirect('traslados:cliente_list')
+    return render(request, 'traslados/cliente_confirm_delete.html', {'cliente': query})
 ########################################################
 def flete_list(requets: HttpRequest) -> HttpResponse:
     query = Flete.objects.all()
@@ -122,6 +137,17 @@ def cotizacion_update(request: HttpRequest, pk: int) -> HttpResponse:
             form.save()
             return redirect('traslados:cotizacion_list')
     return render(request, 'traslados/cotizacion_form.html', {'form': form})
+
+def cotizacion_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Cotizacion, id=pk)
+    return render(request, 'traslados/cotizacion_detail.html', {'cotizacion': query})
+
+def cotizacion_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = get_object_or_404(Cotizacion, id=pk)
+    if request.method == 'POST':
+        query.delete()
+        return redirect('traslados:cotizacion_list')
+    return render(request, 'traslados/cotizacion_confirm_delete.html', {'cotizacion': query})
 
 ########################################################
 def paquete_list(requets: HttpRequest) -> HttpResponse:

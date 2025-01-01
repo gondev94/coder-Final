@@ -20,7 +20,9 @@
                     <td>${{ cotizacion.total }}</td>
                     <td>{{ cotizacion.fecha_de_entrega }}</td>
                     <td>
-                        <a href="{% url 'traslados:cotizacion_update' cotizacion.id %}"><button>Editar</button></a>
+                        <ol><a href="{% url 'traslados:cotizacion_update' cotizacion.id %}"><button>Editar</button></a></ol>
+                        <ol><a href="{% url 'traslados:cotizacion_delete' cotizacion.id %}"><button>Eliminar</button></a></ol>
+                        <ol><a href="{% url 'traslados:categoria_detail' cotizacion.id %}"><button>Ver</button></a></ol>
                     </td>
                 </tr>
             {% endfor %}

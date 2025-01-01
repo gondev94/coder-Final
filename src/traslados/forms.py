@@ -5,7 +5,7 @@ class CategoriaForm(forms.ModelForm):
     class Meta:
         model = models.Categoria
         fields = ['nombre', 'descripcion']
-    
+
     def clean_nombre(self):
         nombre:str = self.cleaned_data.get('nombre','')
         if len(nombre) < 3:

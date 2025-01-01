@@ -25,12 +25,15 @@
                     <td>{{ cliente.email }}</td>
                     <td>{{ cliente.paquete.nombre }}</td>
                     <td>
-                        <a href="{% url 'traslados:cliente_update' cliente.id %}"><button>Editar</button></a>
+                        
+                        <ol><a href="{% url 'traslados:cliente_update' cliente.id %}"><button>Editar</button></a></ol>
+                        <ol><a href="{% url 'traslados:cliente_detail' cliente.id %}"><button>Ver</button></a></ol>
+                        <ol><a href="{% url 'traslados:cliente_delete' cliente.id %}"><button>Eliminar</button></a></ol>
+                    
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'core:index' %}"><button>Inicio</button></a>
     <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
 {% endblock content %}

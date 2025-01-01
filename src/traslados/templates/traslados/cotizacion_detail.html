@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h1>Cotización - Vista en detalle</h1>
+    {% if cotizacion %}
+        
+   
+    <ul>
+        <li><strong>Cliente: </strong> {{ cotizacion.cliente }}</li>
+        <li><strong>Descripción: </strong> {{ cotizacion.descripcion }}</li>
+        <li><strong>Precio por Kilómetro: </strong> {{ cotizacion.precio_por_km }}</li>
+        <li><strong>Paquete: </strong> {{ cotizacion.paquete }}</li>
+        <li><strong>Total: </strong> {{ cotizacion.total }}</li>
+    </ul>
+    {% else %}
+        <p>No se encontró la cotización.</p>
+    {% endif %}
+    <a href="{% url 'traslados:cotizacion_list' %}"><button>Volver</button></a>
+{% endblock content %}

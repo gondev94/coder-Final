@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Paquete: Categorias - Eliminación de registro</h1>
+    <p>¿Estas seguro que quieres eliminar? {{object}} </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Si, Confirmo</button>
+
+    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+{% endblock content %}

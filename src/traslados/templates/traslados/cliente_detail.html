@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Cliente - Vista en detalle</h1>
+    {% if cliente %}
+        <ul>
+            <li><strong>Nombre: </strong> {{ cliente.nombre }}</li>
+            <li><strong>Apellido: </strong> {{ cliente.apellido }}</li>
+            <li><strong>Dirección: </strong> {{ cliente.direccion }}</li>
+            <li><strong>Teléfono: </strong> {{ cliente.telefono }}</li>
+            <li><strong>Email: </strong> {{ cliente.email }}</li>
+            <li><strong>Paquete: </strong> {{ cliente.paquete.nombre }}</li>
+        </ul>
+    {% else %}
+        <p>No se encontró el cliente.</p>
+    {% endif %}
+
+    <a href="{% url 'traslados:cliente_list' %}"><button>Volver</button></a>
+    {% endblock content %}

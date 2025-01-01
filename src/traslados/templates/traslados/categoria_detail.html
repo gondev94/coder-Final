@@ -2,18 +2,20 @@
 
 {% block content %}
     <h1>Paquete: Categorias - Vista en detalle</h1>
-    <ul>
-        <li><strong>Nombre: </strong> {{categoria.nombre}} </li>
-        <li><strong>Descripción: </strong>
-        {% if categoria.descripcion %}
-            {{categoria.descripcion}}
-            {% else %}
-                -           
-            {% endif %}
-        </li>
-    </ul>
-
+    {% if categoria %}
+        <ul>
+            <li><strong>Nombre: </strong> {{ categoria.nombre }}</li>
+            <li><strong>Descripción: </strong>
+                {% if categoria.descripcion %}
+                    {{ categoria.descripcion }}
+                {% else %}
+                    -
+                {% endif %}
+            </li>
+        </ul>
+    {% else %}
+        <p>No se encontró la categoría.</p>
+    {% endif %}
 
     <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
-
 {% endblock content %}
