@@ -9,8 +9,9 @@ def index(request):
     return render(request, 'traslados/index.html')
 
 def categoria_list(requets):
-    categorias = Categoria.objects.all()
-    return render(requets, 'traslados/categoria_list.html', {'categorias': categorias})
+    query = Categoria.objects.all()
+    return render(requets, 'traslados/categoria_list.html', {'object': query})
+
 ########################################################
 def categoria_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
@@ -21,7 +22,6 @@ def categoria_create(request: HttpRequest) -> HttpResponse:
             form.save()
             return redirect('traslados:categoria_list')
     return render(request, 'traslados/categoria_form.html', {'form': form})
-
 
 
 def categoria_update(request: HttpRequest, pk: int) -> HttpResponse:
@@ -35,7 +35,9 @@ def categoria_update(request: HttpRequest, pk: int) -> HttpResponse:
             return redirect('traslados:categoria_list')
     return render(request, 'traslados/categoria_form.html', {'form': form})
 
-
+def categoria_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = Categoria.objects.get(id=pk)
+    return render(request, 'traslados/categoria_detail.html', {'object': query})
 
 
 

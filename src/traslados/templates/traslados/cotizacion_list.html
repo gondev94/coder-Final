@@ -15,7 +15,7 @@
         <tbody>
             {% for cotizacion in object_list %}
                 <tr>
-                    <td>{{ cotizacion.cliente }}</td>
+                    <td>{{ cotizacion.cliente.nombre }} - {{cotizacion.cliente.apellido}} </td>
                     <td>{{ cotizacion.paquete }}</td>
                     <td>${{ cotizacion.total }}</td>
                     <td>{{ cotizacion.fecha_de_entrega }}</td>

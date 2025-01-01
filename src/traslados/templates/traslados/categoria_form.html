@@ -1,9 +1,12 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
+    {% if form.instance.pk %}
+    <h1>Paquetes: Categorias - Formulario de edición</h1>
+    {% else %}
+    <h1>Paquetes: Categorias - Formulario de creación</h1>
+    {% endif %}
 
-
-<h1>Paquetes: Categorias - Formulario</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

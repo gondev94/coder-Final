@@ -18,7 +18,7 @@
                     <td>{{ categoria.descripcion }}</td>
                     <td>
                         <a href="{% url 'traslados:categoria_update' categoria.id %}"><button>Editar</button></a>
-                       
+                        <a href="{% url 'traslados:categoria_detail' categoria.id %}"><button>Ver</button></a>
                     </td>
                 </tr>
             {% endfor %}
