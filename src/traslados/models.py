@@ -49,7 +49,7 @@ class Cotizacion(models.Model):
     descripcion = models.TextField()
     precio_por_km = models.IntegerField(default=1400)
     paquete = models.ForeignKey(Paquete, on_delete=models.CASCADE)
-    total = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, editable=False)
     fecha_de_entrega = models.DateField(null=True, blank=True)
     
     def save(self, *args, **kwargs):
@@ -66,7 +66,8 @@ class Cotizacion(models.Model):
 
 class Flete(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True)
-
+    cotizacion = models.ForeignKey(Cotizacion, on_delete=models.SET_NULL, null=True)
+    
         
     def __str__(self):
         return f'{self.cliente}'
@@ -81,7 +82,7 @@ class Transportista(models.Model):
     licencia = models.CharField(max_length=50)
     telefono = models.CharField(max_length=50)
     email = models.EmailField()
-    flete = models.ForeignKey(Flete, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return f'{self.nombre} - {self.apellido} - {self.licencia} - {self.telefono} - {self.email}'
@@ -89,3 +90,4 @@ class Transportista(models.Model):
     class Meta:
         verbose_name = 'Transportista'
         verbose_name_plural = 'Transportistas'
+    
