@@ -8,11 +8,11 @@ from .models import Categoria, Cliente, Flete, Cotizacion, Paquete, Transportist
 def index(request):
     return render(request, 'traslados/index.html')
 
+########################################################
 def categoria_list(requets):
     query = Categoria.objects.all()
     return render(requets, 'traslados/categoria_list.html', {'object': query})
 
-########################################################
 def categoria_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
         form = CategoriaForm()
@@ -49,9 +49,12 @@ def categoria_delete (request: HttpRequest, pk: int) -> HttpResponse:
 
 #########################################################
 def cliente_list(requets: HttpRequest) -> HttpResponse:
-    query = Cliente.objects.all()
-    context = {"object_list": query}
-    return render(requets, 'traslados/cliente_list.html', context)
+    query = requets.GET.get('query')
+    if query:
+        query = Cliente.objects.filter(nombre__icontains=query)
+    else:
+        query = Cliente.objects.all()    
+    return render(requets, 'traslados/cliente_list.html', {'object_list' : query})
 
 def cliente_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
@@ -75,20 +78,23 @@ def cliente_update(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'traslados/cliente_form.html', {'form': form})
 
 def cliente_detail(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Cliente, id=pk)
+    query = Cliente.objects.get(id=pk)
     return render(request, 'traslados/cliente_detail.html', {'cliente': query})
 
 def cliente_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Cliente, id=pk)
+    query = Cliente.objects.get(id=pk)
     if request.method == 'POST':
         query.delete()
         return redirect('traslados:cliente_list')
     return render(request, 'traslados/cliente_confirm_delete.html', {'cliente': query})
 ########################################################
 def flete_list(requets: HttpRequest) -> HttpResponse:
-    query = Flete.objects.all()
-    context = {"object_list": query}
-    return render(requets, 'traslados/flete_list.html', context)
+    query = requets.GET.get('query')
+    if query:
+        query = Flete.objects.filter(nombre__icontains=query)
+    else:
+        query = Flete.objects.all()
+    return render(requets, 'traslados/flete_list.html', {'object_list' : query})
 
 def flete_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
@@ -112,11 +118,11 @@ def flete_update(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'traslados/flete_form.html', {'form': form})
 
 def flete_detail(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Flete, id=pk)
+    query = Flete.objects.get(id=pk)
     return render(request, 'traslados/flete_detail.html', {'flete': query})
 
 def flete_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Flete, id=pk)
+    query = Flete.objects.get(id=pk)
     if request.method == 'POST':
         query.delete()
         return redirect('traslados:flete_list')
@@ -124,9 +130,13 @@ def flete_delete(request: HttpRequest, pk: int) -> HttpResponse:
 
 ########################################################
 def cotizacion_list(requets: HttpRequest) -> HttpResponse:
-    query = Cotizacion.objects.all()
-    context = {"object_list": query}
-    return render(requets, 'traslados/cotizacion_list.html', context)
+    query = requets.GET.get('query')
+    if query:
+        query = Cotizacion.objects.filter(descripcion__icontains=query)
+    else:
+        query = Cotizacion.objects.all()
+    return render(requets, 'traslados/cotizacion_list.html', {'object_list': query})
+
 
 def cotizacion_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
@@ -150,22 +160,24 @@ def cotizacion_update(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'traslados/cotizacion_form.html', {'form': form})
 
 def cotizacion_detail(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Cotizacion, id=pk)
-    return render(request, 'traslados/cotizacion_detail.html', {'cotizacion': query})
+    query = Cotizacion.objects.get(id=pk)
+    return render(request, 'traslados/cotizacion_detail.html', {'object': query})
 
 def cotizacion_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Cotizacion, id=pk)
+    query = Cotizacion.objects.get(id=pk)
     if request.method == 'POST':
         query.delete()
         return redirect('traslados:cotizacion_list')
-    return render(request, 'traslados/cotizacion_confirm_delete.html', {'cotizacion': query})
+    return render(request, 'traslados/cotizacion_confirm_delete.html', {'object': query})
 
 ########################################################
 def paquete_list(requets: HttpRequest) -> HttpResponse:
-    query = Paquete.objects.all()
-    context = {"object_list": query}
-    
-    return render(requets, 'traslados/paquete_list.html', context)
+    query = requets.GET.get('query')
+    if query:
+        query = Paquete.objects.filter(nombre__icontains=query)
+    else:
+        query = Paquete.objects.all()    
+    return render(requets, 'traslados/paquete_list.html', {'object_list': query})
 
 
 
@@ -191,11 +203,11 @@ def paquete_update(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'traslados/paquete_form.html', {'form': form})
 
 def paquete_detail(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Paquete, id=pk)
+    query = Paquete.objects.get(id=pk)
     return render(request, 'traslados/paquete_detail.html', {'paquete': query})
 
 def paquete_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Paquete, id=pk)
+    query = Paquete.objects.get(id=pk)
     if request.method == 'POST':
         query.delete()
         return redirect('traslados:paquete_list')
@@ -203,10 +215,12 @@ def paquete_delete(request: HttpRequest, pk: int) -> HttpResponse:
 
 ########################################################
 def transportista_list(requets: HttpRequest) -> HttpResponse:
-    query = Transportista.objects.all()
-    context = {"object_list": query}
-    
-    return render(requets, 'traslados/transportista_list.html', context)
+    query = requets.GET.get('query')
+    if query:
+        query = Transportista.objects.filter(nombre__icontains=query)
+    else:
+        query = Transportista.objects.all()    
+    return render(requets, 'traslados/transportista_list.html', {'object_list' : query})
 
 def transportista_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
@@ -230,11 +244,11 @@ def transportista_update(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'traslados/transportista_form.html', {'form': form})
 
 def transportista_detail(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Transportista, id=pk)
+    query = Transportista.objects.get(id=pk)
     return render(request, 'traslados/transportista_detail.html', {'transportista': query})
 
 def transportista_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    query = get_object_or_404(Transportista, id=pk)
+    query = Transportista.objects.get(id=pk)
     if request.method == 'POST':
         query.delete()
         return redirect('traslados:transportista_list')

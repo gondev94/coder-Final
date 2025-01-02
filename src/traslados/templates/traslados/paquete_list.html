@@ -1,6 +1,11 @@
 {% extends 'core/base.html' %}
 {% block content %}
     <h1>Lista de Paquetes</h1>
+
+    <form action="" method="get"> 
+        <input type="text" name="query" placeholder="Buscar...">
+    </form>
+
     <a href="{% url 'core:index' %}"><button>Inicio</button></a>
     <a href="{% url 'traslados:paquete_create' %}"><button>Crear Paquete</button></a>
     <a href="{% url 'traslados:categoria_list' %}"><button>Categoria de Paquetes</button></a>

@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Lista de Transportistas</h1>
+    <form action="" method="get"> 
+        <input type="text" name="query" placeholder="Buscar...">
+    </form>
     <a href="{% url 'traslados:transportista_create' %}"><button>Crear Transportista</button></a>
     <a href="{% url 'core:index' %}"><button>Inicio</button></a>
     <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
@@ -28,8 +31,8 @@
                     <td>{{ transportista.flete }}</td>
                     <td>
                         <ol><a href="{% url 'traslados:transportista_update' transportista.id %}"><button>Editar</button></a></ol>
-                        <ol><a href="{% url 'traslados:transportista_detail' transportista.id %}"><button>Ver</button></a></ol>
                         <ol><a href="{% url 'traslados:transportista_delete' transportista.id %}"><button>Eliminar</button></a></ol>
+                        <ol><a href="{% url 'traslados:transportista_detail' transportista.id %}"><button>Ver</button></a></ol>
                     </td>
                 </tr>
             {% endfor %}

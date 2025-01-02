@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Lista de Cotizaciones</h1>
+    <form action="" method="get"> 
+        <input type="text" name="query" placeholder="Buscar...">
+    </form>
     <a href="{% url 'traslados:cotizacion_create' %}"><button>Crear Cotización</button></a>
     <a href="{% url 'core:index' %}"><button>Inicio</button></a>
     <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
@@ -25,7 +28,7 @@
                     <td>
                         <ol><a href="{% url 'traslados:cotizacion_update' cotizacion.id %}"><button>Editar</button></a></ol>
                         <ol><a href="{% url 'traslados:cotizacion_delete' cotizacion.id %}"><button>Eliminar</button></a></ol>
-                        <ol><a href="{% url 'traslados:categoria_detail' cotizacion.id %}"><button>Ver</button></a></ol>
+                        <ol><a href="{% url 'traslados:cotizacion_detail' cotizacion.id %}"><button>Ver</button></a></ol>
                     </td>
                 </tr>
             {% endfor %}

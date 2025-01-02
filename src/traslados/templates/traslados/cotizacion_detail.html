@@ -1,18 +1,16 @@
 {% extends 'core/base.html' %}
+
 {% block content %}
-    <h1>Cotización - Vista en detalle</h1>
-    {% if cotizacion %}
-        
-   
+<h1>Cotización - Vista en detalle</h1>
+{% if object %}
     <ul>
-        <li><strong>Cliente: </strong> {{ cotizacion.cliente }}</li>
-        <li><strong>Descripción: </strong> {{ cotizacion.descripcion }}</li>
-        <li><strong>Precio por Kilómetro: </strong> {{ cotizacion.precio_por_km }}</li>
-        <li><strong>Paquete: </strong> {{ cotizacion.paquete }}</li>
-        <li><strong>Total: </strong> {{ cotizacion.total }}</li>
+        <li><strong>Cliente: </strong> {{ object.cliente }}</li>
+        <li><strong>Descripción: </strong> {{ object.descripcion }}</li>
+        <li><strong>Total: </strong> {{ object.total }}</li>
+        <li><strong>Fecha de entrega: </strong> {{ object.fecha_de_entrega }}</li>
     </ul>
-    {% else %}
-        <p>No se encontró la cotización.</p>
-    {% endif %}
-    <a href="{% url 'traslados:cotizacion_list' %}"><button>Volver</button></a>
+{% else %}
+    <p>No se encontró el cliente.</p>
+{% endif %}
+    <a href="{% url 'traslados:categoria_list' %}"><button>Volver</button></a>
 {% endblock content %}

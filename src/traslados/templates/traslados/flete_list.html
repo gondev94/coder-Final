@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Lista de Fletes</h1>
+    <form action="" method="get"> 
+        <input type="text" name="query" placeholder="Buscar...">
+    </form>
     <a href="{% url 'traslados:flete_create' %}"><button>Crear Flete</button></a>
     <a href="{% url 'core:index' %}"><button>Inicio</button></a>
     <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
@@ -18,8 +21,8 @@
                     <td>{{ flete.cliente }}</td>
                     <td>
                         <ol><a href="{% url 'traslados:flete_update' flete.id %}"><button>Editar</button></a></ol>
-                        <ol><a href="{% url 'traslados:flete_detail' flete.id %}"><button>Ver</button></a></ol>
                         <ol><a href="{% url 'traslados:flete_delete' flete.id %}"><button>Eliminar</button></a></ol>
+                        <ol><a href="{% url 'traslados:flete_detail' flete.id %}"><button>Ver</button></a></ol>
                     </td>
                 </tr>
             {% endfor %}

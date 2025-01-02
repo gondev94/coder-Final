@@ -23,8 +23,8 @@
                     <td>{{ categoria.descripcion }}</td>
                     <td>
                         <ol><a href="{% url 'traslados:categoria_update' categoria.id %}"><button>Editar</button></a></ol>
-                        <ol><a href="{% url 'traslados:categoria_detail' categoria.id %}"><button>Ver</button></a></ol>
                         <ol><a href="{% url 'traslados:categoria_delete' categoria.id %}"><button>Eliminar</button></a></ol>
+                        <ol><a href="{% url 'traslados:categoria_detail' categoria.id %}"><button>Ver</button></a></ol>
                     </td>
                 </tr>
             {% endfor %}

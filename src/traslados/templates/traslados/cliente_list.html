@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Lista de Clientes</h1>
+    <form action="" method="get"> 
+        <input type="text" name="query" placeholder="Buscar...">
+    </form>
     <a href="{% url 'traslados:cliente_create' %}"><button>Crear Cliente</button></a>
     <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
     <table>
@@ -28,8 +31,8 @@
                     <td>
                         
                         <ol><a href="{% url 'traslados:cliente_update' cliente.id %}"><button>Editar</button></a></ol>
-                        <ol><a href="{% url 'traslados:cliente_detail' cliente.id %}"><button>Ver</button></a></ol>
                         <ol><a href="{% url 'traslados:cliente_delete' cliente.id %}"><button>Eliminar</button></a></ol>
+                        <ol><a href="{% url 'traslados:cliente_detail' cliente.id %}"><button>Ver</button></a></ol>
                     
                     </td>
                 </tr>
