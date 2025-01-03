@@ -10,14 +10,15 @@
         <thead>
             <tr>
                 <th>Cliente</th>
+                <th>Transportista</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for flete in object_list %}
                 <tr>
-                    <td>{{ flete.cliente }}</td>
-                    
+                    <td> {{ flete.cotizacion }}</td>               
+                    <td> {{ flete.transportista}} </td>
                     <td>
                         <ol><a href="{% url 'traslados:flete_update' flete.id %}"><button>Editar</button></a></ol>
                         <ol><a href="{% url 'traslados:flete_delete' flete.id %}"><button>Eliminar</button></a></ol>

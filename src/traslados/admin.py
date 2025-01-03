@@ -28,4 +28,4 @@ class FleteAdmin(admin.ModelAdmin):
 
 @admin.register(models.Transportista)
 class TransportistaAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'apellido', 'licencia', 'telefono', 'email', 'flete')
+    list_display = ('nombre', 'apellido', 'licencia', 'telefono', 'email')

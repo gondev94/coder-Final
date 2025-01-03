@@ -5,7 +5,7 @@
     <p>¿Estas seguro que quieres eliminar? {{object}} </p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Si, Confirmo</button>
+        <button type="submit">Si, Elminar</button>
 
-    <a href="{% url 'traslados:index' %}"><button>Volver</button></a>
+    <a href="{% url 'traslados:categoria_list' %}"><button>No, Eliminar</button></a>
 {% endblock content %}

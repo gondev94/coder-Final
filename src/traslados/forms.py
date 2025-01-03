@@ -6,13 +6,6 @@ class CategoriaForm(forms.ModelForm):
         model = models.Categoria
         fields = ['nombre', 'descripcion']
 
-    def clean_nombre(self):
-        nombre:str = self.cleaned_data.get('nombre','')
-        if len(nombre) < 3:
-            raise forms.ValidationError('Debe tener al menos 3 caracteres')
-        if nombre.isalpha():
-            raise forms.ValidationError('Debe contener caracteres alfabéticos')
-        return nombre
 
 class PaqueteForm(forms.ModelForm):
     class Meta:
@@ -41,7 +34,7 @@ class ClienteForm(forms.ModelForm):
 class CotizacionForm(forms.ModelForm):
     class Meta:
         model = models.Cotizacion
-        fields = ['cliente', 'descripcion', 'precio_por_km', 'paquete', 'fecha_de_entrega']
+        fields = ['cliente', 'descripcion', 'paquete', 'fecha_de_entrega']
         widgets = {
             'fecha_de_entrega': forms.DateInput(attrs={'type':'date'})}
             
@@ -55,19 +48,13 @@ class CotizacionForm(forms.ModelForm):
 class FleteForm(forms.ModelForm):
     class Meta:
         model = models.Flete
-        fields = ['cliente']
+        fields = ['cotizacion','transportista']
     
     
 class TransportistaForm(forms.ModelForm):
     class Meta:
         model = models.Transportista
-        fields = ['nombre', 'apellido', 'licencia', 'telefono', 'email', 'flete']
+        fields = ['nombre', 'apellido', 'licencia', 'telefono', 'email']
     
-    def clean_nombre(self):
-        nombre:str = self.cleaned_data.get('nombre','')
-        if len(nombre) < 3:
-            raise forms.ValidationError('Debe tener al menos 3 caracteres')
-        if not nombre.isalpha():
-            raise forms.ValidationError('Debe contener caracteres alfabéticos')
-        return nombre
+
 

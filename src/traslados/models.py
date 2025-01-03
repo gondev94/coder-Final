@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 
 
+
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.TextField()
@@ -11,7 +12,7 @@ class Categoria(models.Model):
     
     class Meta:
         unique_together = ('nombre', 'descripcion')
-        verbose_name = 'Categoria de Paquetes'
+        verbose_name = 'Categoria de Paquete'
         verbose_name_plural = 'Categorias de Paquetes'
 
   
@@ -57,16 +58,31 @@ class Cotizacion(models.Model):
         super(Cotizacion, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.cliente} - {self.descripcion} - {self.total}'
-    
+        return f'{self.cliente} - Total: ${self.total} - Fecha de entrega: {self.fecha_de_entrega}'  
     class Meta:
         verbose_name = 'Cotizacion'
         verbose_name_plural = 'Cotizaciones'   
         
 
+class Transportista(models.Model):
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    licencia = models.CharField(max_length=50)
+    telefono = models.CharField(max_length=50)
+    email = models.EmailField()
+
+
+    def __str__(self):
+        return f'{self.nombre} - {self.apellido}  - {self.licencia} - {self.telefono} - {self.email}'
+    
+    class Meta:
+        verbose_name = 'Transportista'
+        verbose_name_plural = 'Transportistas'
+    
 class Flete(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True)
     cotizacion = models.ForeignKey(Cotizacion, on_delete=models.SET_NULL, null=True)
+    transportista = models.ForeignKey(Transportista, on_delete=models.SET_NULL, null=True)
     
         
     def __str__(self):
@@ -75,19 +91,3 @@ class Flete(models.Model):
     class Meta:
         verbose_name = 'Flete'
         verbose_name_plural = 'Fletes'
-
-class Transportista(models.Model):
-    nombre = models.CharField(max_length=50, unique=True)
-    apellido = models.CharField(max_length=50)
-    licencia = models.CharField(max_length=50)
-    telefono = models.CharField(max_length=50)
-    email = models.EmailField()
-
-
-    def __str__(self):
-        return f'{self.nombre} - {self.apellido} - {self.licencia} - {self.telefono} - {self.email}'
-    
-    class Meta:
-        verbose_name = 'Transportista'
-        verbose_name_plural = 'Transportistas'
-    
